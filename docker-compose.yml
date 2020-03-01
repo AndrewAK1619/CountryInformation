@@ -1,0 +1,17 @@
+version: '3'
+services:
+    web:
+      build: .
+      ports: 
+          - 8080:8080
+      depends_on:
+          - db
+    db:
+        container_name: world_db
+        image: ghusta/postgres-world-db:2.4
+        environment:
+            - POSTGRES_PASSWORD=world123
+            - POSTGRES_USER=world
+            - POSTGRES_DB=world-db
+        ports:
+            - 5432:5432
